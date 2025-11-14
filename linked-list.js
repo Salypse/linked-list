@@ -19,6 +19,17 @@ class LinkedList{
 
         }
     }
+
+    prepend(value) {
+        const newNode = new Node(value)
+        
+        if (!this.head) {
+            this.head = newNode
+        } else {
+            newNode.next = this.head
+            this.head = newNode
+        }
+    }
 };
 
 class Node {
@@ -30,7 +41,8 @@ class Node {
 
 const testList = new LinkedList()
 
-testList.append("1")
 testList.append("2")
+testList.prepend("1")
+testList.append("3")
 
 console.log(testList)
