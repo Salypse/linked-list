@@ -101,6 +101,19 @@ class LinkedList{
         }
         return null
     }
+
+    toString() {
+        let output = ""
+        let currentNode = this.headNode
+
+        while (currentNode) {
+            output += `( ${currentNode.value} ) --> `
+            currentNode = currentNode.next
+        }
+
+        output += "null"
+        return output
+    }
 };
 
 class Node {
@@ -112,8 +125,11 @@ class Node {
 
 const testList = new LinkedList()
 
-testList.append("2")
-testList.prepend("1")
-testList.append("3")
+testList.append("dog")
+testList.append("cat")
+testList.append("parrot")
+testList.append("hamster")
+testList.append("snake")
+testList.append("turtle")
 
-console.log(testList)
+console.log(testList.toString())
