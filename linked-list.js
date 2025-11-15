@@ -114,6 +114,49 @@ class LinkedList{
         output += "null"
         return output
     }
+
+    insertAt(value, index) {
+        const newNode = new Node(value)
+        let currentNode = this.headNode;
+        let currentIndex = 0;
+
+        if (index === 0) {
+            newNode.next = this.headNode;
+            this.headNode = newNode 
+        }else {
+            while (currentNode) {
+                if (currentIndex + 1 === index) {
+                    const tempNode = currentNode.next;
+
+                    currentNode.next = newNode
+                    newNode.next = tempNode
+                    break
+                }else {
+                    currentNode = currentNode.next
+                    currentIndex++
+                }
+            }
+        }
+    }
+
+    removeAt(index) {
+        let currentIndex = 0
+        let currentNode = this.headNode
+
+        if (index === 0) {
+            this.headNode = this.headNode.next
+        } else {
+            while (currentNode) {
+                if (currentIndex + 1 === index && currentNode.next) {
+                    currentNode.next = currentNode.next.next
+                    break
+                } else {
+                    currentNode = currentNode.next
+                    currentIndex++
+                }
+            }
+        }
+    }
 };
 
 class Node {
@@ -122,14 +165,3 @@ class Node {
         this.next = next;
     };
 };
-
-const testList = new LinkedList()
-
-testList.append("dog")
-testList.append("cat")
-testList.append("parrot")
-testList.append("hamster")
-testList.append("snake")
-testList.append("turtle")
-
-console.log(testList.toString())
